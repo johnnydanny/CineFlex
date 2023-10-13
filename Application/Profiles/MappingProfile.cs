@@ -1,4 +1,5 @@
-﻿using Application.DTOs.MovieDtos;
+﻿using Application.DTOs.CinemaDtos;
+using Application.DTOs.MovieDtos;
 using AutoMapper;
 using Domain.Entites;
 using System;
@@ -17,7 +18,12 @@ namespace Application.Profiles
             CreateMap<Movie, MovieDto>().ReverseMap();
             CreateMap<Movie, CreateMovieDto>().ReverseMap();
             CreateMap<Movie, UpdateMovieDto>().ReverseMap();
-           
+
+            // cinema
+
+            CreateMap<Cinema, CinemaDto>().ReverseMap();
+            CreateMap<Cinema, CreateCinemaDto>().ReverseMap();
+            CreateMap<Cinema, UpdateCinemaDto>().ReverseMap();
         }
     }
 }

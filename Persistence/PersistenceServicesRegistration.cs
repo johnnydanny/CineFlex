@@ -21,6 +21,7 @@ namespace Persistence
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<ICinemaRepository, CinemaRepository>();
             return services;
 
         }

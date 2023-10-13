@@ -37,7 +37,7 @@ namespace Application.Features.Handlers.MovieHandlers
 
             var movie = await _movieRepository.GetById(request.updateMovieDto.Id);
 
-            // movie might not actually exist despite valid updatedto
+           
             if (movie == null)
             {
                throw new NotFoundException(nameof(movie), request.updateMovieDto.Id);

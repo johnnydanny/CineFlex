@@ -23,7 +23,7 @@ namespace Application.Features.Handlers.MovieHandlers
         }
         public async Task<MovieDto> Handle(GetMovieByIdQuery request, CancellationToken cancellationToken)
         {
-            var movie = await _movieRepository.GetById(request.Id);
+           var movie = await _movieRepository.GetById(request.Id);
 
            return _mapper.Map<MovieDto>(movie);
         }
