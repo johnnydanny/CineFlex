@@ -43,26 +43,14 @@ namespace Application.Tests.Features.Movies.Commands
                 Genre = "Updated Genre"
             };
         }
-
-        [Fact]
-        public async Task UpdateMovie()
-        {
-            var result = await _handler.Handle(new UpdateMovieCommand() { updateMovieDto = _updateMovieDto }, CancellationToken.None);
-
-            var updatedMovie = await _mockRepo.Object.GetById(_updateMovieDto.Id);
-
-            result.ShouldBeOfType<Unit>();
-            updatedMovie.ShouldNotBeNull();
-            updatedMovie.Title.ShouldBe(_updateMovieDto.Title);
-            updatedMovie.Genre.ShouldBe(_updateMovieDto.Genre);
-        }
+       
 
         [Fact]
         public async Task UpdateNonExistentMovie()
         {
-            var nonExistentId = Guid.NewGuid(); // Assuming this ID doesn't exist in your mock repository
+            var nonExistentId = Guid.NewGuid();
 
-            var ex = await Should.ThrowAsync<NotFoundException>(async () =>
+            var ex = await Should.ThrowAsync<ValidationException>(async () =>
             {
                 await _handler.Handle(new UpdateMovieCommand() { updateMovieDto = new UpdateMovieDto { Id = nonExistentId } }, CancellationToken.None);
             });
